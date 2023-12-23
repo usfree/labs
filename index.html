@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <meta name="theme-color" content="#FC8574">
+        <meta name="theme-color" content="#af4545">
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="images/favicon_new.svg" />
         <!-- Custom Google font-->
@@ -97,22 +97,13 @@
                 $("#credit").click(function() {
                     gotosaveloc("credit.html");
                 });
-                /*스크롤시 navbar배경 */
-                $(document).scroll(function() {
-                    var scroll = $(document).scrollTop();
-                    if (scroll >= 50) {
-                        $('#add-fixed').addClass('scroll-navbar-background');
-                    } else {
-                        $('#add-fixed').removeClass('scroll-navbar-background');
-                    }
-                });
             });
         </script>
         <link href="assets/css/styles.css" rel="stylesheet"/>
         <!-- OG TAG -->
         <meta property="og:type" content="website">
         <meta property="og:title" content="USFREE Labs" /> 
-        <meta property="og:url" content="usfree.site" />
+        <meta property="og:url" content="usfree.site/labs" />
         <meta property="og:image" content="https://usfree.site/images/OGmetaN.png" /> 
         <meta property="og:description" content="USFREE 실험실" />
     </head>
@@ -127,18 +118,13 @@
         </div>
     </div>-->
     <body class="d-flex flex-column vh-100 overflow-scroll-y" oncontextmenu="return false" ondragstart="return false">
-        <div class= "load" id="load">
-            <div class="loader">
-                <svg viewBox="25 25 50 50" class="loadings">
-                    <circle r="20" cy="50" cx="50"></circle>
-                </svg>
-            </div>
-        </div>
-        <div class="bg-video">
+
+        <div class="bg-video hidden">
             <video class="bg-video__content" autoplay muted loop>
               <source src="images/video/usfree_creative.mp4" type="video/mp4" />
             </video>
         </div>
+        <img class="bg-video-prj" src="images/back.png">
         <div class="loading"></div>
         <main class="flex-shrink-0">
             <!-- Navigation-->
@@ -156,9 +142,10 @@
                         </svg>
                       </label></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 font-letter-space fs-fr">
+                        <ul class="navbar-nav mb-2 ms-auto me-auto  mb-lg-0 font-letter-space fs-fr w-auto">
                             <li class="nav-item navmargin hidden"><a class="nav-link" id="project" style="color: red;">Project구버전</a></li>
                             <li class="nav-item navmargin"><a class="nav-link" id="api">api</a></li>
+                            <li class="nav-item navmargin"><a class="nav-link" id="api">games</a></li>
                             <!-- 다크모드 toggle 
                             <div class="wrap">
                                 <div class="darkmode">
@@ -174,6 +161,13 @@
                     </div>
                 </div>
             </nav>
+        </div>
+        <div class= "load" id="load">
+            <div class="loader">
+                <svg viewBox="25 25 50 50" class="loadings">
+                    <circle r="20" cy="50" cx="50"></circle>
+                </svg>
+            </div>
         </div>
             <div id="main">
                 <!-- load될 영역 -->
