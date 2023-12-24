@@ -16,6 +16,14 @@
         <script src="assets/js/748053c430.js"></script>
         <script src="assets/js/jquery-3.7.1.min.js"></script>
         <script>
+            var api_key = "test_02623554ef843dbcfc123dd4da641b0291f8e2ab03548d7e79c0ce55c320255f97462e0c961d99b88145a3fe46aab7ff";
+            let today = new Date();
+            let year = today.getFullYear(); // 년도
+            let month = today.getMonth() + 1;  // 월
+            let date = today.getDate() - 1;  // 날짜
+            var today_date = year + '-' + month + '-' + date;
+
+
             var acorClose = function() {
                 if ($('.navbar-toggler').attr('aria-expanded') == 'true') {
                     $(".navbar-toggler").trigger("click");
@@ -82,22 +90,116 @@
                 $("#mains").click(function() {
                     gotosaveloc("main.html");
                 });
-                $("#profiles").click(function() {
-                    gotosaveloc("profiles.html");
-                });
-                $("#projects").click(function() {
-                    gotosaveloc("projects.html");
-                });
-                $("#links").click(function() {
-                    gotosaveloc("elements/link.html");
-                });
-                $("#links2").click(function() {
-                    gotosaveloc("elements/link.html");
-                });
-                $("#credit").click(function() {
-                    gotosaveloc("credit.html");
-                });
+
             });
+
+
+            var get_ocid;
+            function chrsearch(){
+                let input_name = $("#name").val(); //"아닉"; //
+                $.ajax({
+                        method: "GET",
+                        url: "https://open.api.nexon.com/maplestory/v1/id",
+                        data: {
+                            character_name: input_name,
+                        },
+                        headers: {
+                            "x-nxopen-api-key": api_key
+                        },
+                        success: function (data) {
+                            get_ocid = data.ocid;
+                            console.log(data.ocid);
+                            sessionStorage.setItem('name', input_name);
+                        },
+                        complete: function() {
+                            $.ajax({
+                                method: "GET",
+                                url: "https://open.api.nexon.com/maplestory/v1/character/basic",
+                                data: {
+                                    ocid: get_ocid,
+                                    date: today_date
+                                },
+                                headers: {
+                                    "x-nxopen-api-key": api_key
+                                },
+                            })
+                            .done(function (msg) {
+                                console.log(msg);
+                                $('.character_name').empty().append(msg.character_name);
+                                $('.world_name').empty().append(msg.world_name);
+                                $('.character_level').empty().append(msg.character_level);
+                                $('.character_class').empty().append(msg.character_class);
+                                $('.character_guild_name').empty().append(msg.character_guild_name);
+                                $('.character_image').empty().append('<img src="' + msg.character_image + '" style="width: 115%;"/>');
+                                $('.character_exp_rate').empty().append(msg.character_exp_rate); 
+                            });
+                            $.ajax({
+                                method: "GET",
+                                url: "https://open.api.nexon.com/maplestory/v1/character/dojang",
+                                data: {
+                                    ocid: get_ocid,
+                                    date: today_date
+                                },
+                                headers: {
+                                    "x-nxopen-api-key": api_key
+                                },
+                            })
+                            .done(function (msg) {
+                                console.log(msg);
+                                $('.dojang_best_floor').empty().append(msg.dojang_best_floor);
+                                $('.dojang_best_time').empty().append(Math.floor(msg.dojang_best_time / 60));
+                                $('.dojang_best_time_sec').empty().append(msg.dojang_best_time % 60);
+                            });
+                            $.ajax({
+                                method: "GET",
+                                url: "https://open.api.nexon.com/maplestory/v1/character/popularity",
+                                data: {
+                                    ocid: get_ocid,
+                                    date: today_date
+                                },
+                                headers: {
+                                    "x-nxopen-api-key": api_key
+                                },
+                            })
+                            .done(function (msg) {
+                                console.log(msg);
+                                $('.popularity').empty().append(msg.popularity);
+                            });
+                            $.ajax({
+                                method: "GET",
+                                url: "https://open.api.nexon.com/maplestory/v1/user/union",
+                                data: {
+                                    ocid: get_ocid,
+                                    date: today_date
+                                },
+                                headers: {
+                                    "x-nxopen-api-key": api_key
+                                },
+                            })
+                            .done(function (msg) {
+                                console.log(msg);
+                                $('.union_level').empty().append(msg.union_level);
+                                $('.union_grade').empty().append(msg.union_grade);
+                            });
+                            $.ajax({
+                                method: "GET",
+                                url: "https://open.api.nexon.com/maplestory/v1/ranking/achievement",
+                                data: {
+                                    ocid: get_ocid,
+                                    date: today_date
+                                },
+                                headers: {
+                                    "x-nxopen-api-key": api_key
+                                },
+                            })
+                            .done(function (msg) {
+                                console.log(msg);
+                                $('.trophy_score').empty().append(msg.ranking[0].trophy_score);
+                                $('.trophy_grade').empty().append(msg.ranking[0].trophy_grade);
+                            });
+                        }
+                    })
+                }
         </script>
         <link href="assets/css/styles.css" rel="stylesheet"/>
         <!-- OG TAG -->
@@ -107,61 +209,37 @@
         <meta property="og:image" content="https://usfree.site/images/OGmetaN.png" /> 
         <meta property="og:description" content="USFREE 실험실" />
     </head>
-    <!-- 프로모션바
-        <div class="universe d-grid">
-        <div class="px-4 row align-items-center justify-content-between flex-sm-row">
-            <div class="font-5 font-letter-space-lg col-auto my-auto ">usfree UNiVERSE</div>
-            <div class="col-auto uni-items">
-                <div id="modalOpenButton" class="font-5 font-letter-space fs-6">MORE <i class="fa-solid fa-chevron-down"></i></div>
-                <div id="modalCloseButton" class="font-5 font-letter-space fs-6 hidden">CLOSE <i class="fa-solid fa-chevron-up"></i></div>
-            </div>
-        </div>
-    </div>-->
     <body class="d-flex flex-column vh-100 overflow-scroll-y" oncontextmenu="return false" ondragstart="return false">
+        <video class="hidden" >
+            <source src=  />
+        </video>
 
-        <div class="bg-video hidden">
-            <video class="bg-video__content" autoplay muted loop>
-              <source src="images/video/usfree_creative.mp4" type="video/mp4" />
-            </video>
-        </div>
         <img class="bg-video-prj" src="images/back.png">
-        <div class="loading"></div>
         <main class="flex-shrink-0">
             <!-- Navigation-->
             <div id="add-fixed" class="">
                 <nav id="navbarcontrol" class="navbar navbar-upper navbar-expand-lg navbar-light"> <!-- navbar-expand-lg  속성으로 인해 햄버거 메뉴 동작-->
-                <div id='changecontainer' class="container-full px-4 ">
-                    <a class="navbar-brand" id="mains"><img class="logoimg"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <label class="hamburger">
-                        <input type="checkbox" id="hbg">
-                        <svg viewBox="0 0 32 32">
-                          <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
-                          <path class="line" d="M7 16 27 16"></path>
-                        </svg>
-                      </label></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mb-2 ms-auto me-auto  mb-lg-0 font-letter-space fs-fr w-auto">
-                            <li class="nav-item navmargin hidden"><a class="nav-link" id="project" style="color: red;">Project구버전</a></li>
-                            <li class="nav-item navmargin"><a class="nav-link" id="api">api</a></li>
-                            <li class="nav-item navmargin"><a class="nav-link" id="api">games</a></li>
-                            <!-- 다크모드 toggle 
-                            <div class="wrap">
-                                <div class="darkmode">
-                                    <div class="inner">
-                                        <input type="radio" name="toggle" id="toggle-radio-light" checked><label for="toggle-radio-light" class="tolight"><i class="fas fa-sun tolight"></i></label>
-                                        <input type="radio" name="toggle" id="toggle-radio-dark"><label for="toggle-radio-dark" class="todark"><i class="fas fa-moon todark"></i></label>
-                                        <div class="darkmode-bg"></div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <!-- toggle end -->
-                        </ul>
+                    <div id='changecontainer' class="container-full px-4 ">
+                        <a class="navbar-brand" id="mains"><img class="logoimg"></a>
+                        <!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <label class="hamburger">
+                            <input type="checkbox" id="hbg">
+                            <svg viewBox="0 0 32 32">
+                            <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                            <path class="line" d="M7 16 27 16"></path>
+                            </svg>
+                        </label></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mb-2 ms-auto me-auto  mb-lg-0 font-letter-space fs-fr w-auto">
+                                <li class="nav-item navmargin hidden"><a class="nav-link" id="project" style="color: red;">Project구버전</a></li>
+                                <li class="nav-item navmargin"><a class="nav-link" id="api">api</a></li>
+                                <li class="nav-item navmargin"><a class="nav-link" id="api">games</a></li>
+                            </ul>
+                        </div>-->
                     </div>
-                </div>
-            </nav>
-        </div>
+                </nav>
+            </div>
         <div class= "load" id="load">
             <div class="loader">
                 <svg viewBox="25 25 50 50" class="loadings">
@@ -169,15 +247,10 @@
                 </svg>
             </div>
         </div>
-            <div id="main">
-                <!-- load될 영역 -->
-            </div>
-            <!--Modal 창
-            <div id="modalContainer" class="hidden">
-                <div id="modalContent" class="hidden">
-                    <iframe scrolling="no" src="modal.html" width="100%" height="100%"></iframe>
-                </div>
-            </div>-->
+        <div id="main">
+            <!-- load될 영역 -->
+        </div>
+
         </main>
         <div id="topbtn" class="ss-go-top">
             <a class="smoothscroll" title="Back to Top">

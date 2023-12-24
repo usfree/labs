@@ -163,6 +163,42 @@ body {
   --bs-logo-img: url("../../images/labs_logo.png");
 }
 
+/*info*/
+.character-top {
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.bg-info-back img {
+  position: absolute; 
+  opacity: 0.15; 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  justify-items: center;
+}
+
+.card-blur-info {
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background-color: rgba(var(--bs-white-rgb), 0.4);
+  overflow: visible;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
 .text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
@@ -669,16 +705,6 @@ li:hover > .nav-link::after {
 }
 
 
-.bg-video {
-  position: fixed; /* 스크롤시 고정은 absolute */
-  top: 0;
-  left: 0;
-  height: 40vh; /* absolute시 100vh */
-  width: 100%;
-  z-index: -3;
-  opacity: 0.15; /* 원본값 0.15 */
-  /* filter:blur(2px); 배경 블러 */
-}
 
 .bg-video-prj {
   position: absolute; /* 스크롤시 고정은 absolute */
@@ -738,12 +764,6 @@ li:hover > .nav-link::after {
   right: 10px;
   z-index: 1030;
   color: var(--bs-black);
-}
-
-.bg-video__content {
-  height: 100vh;
-  width: 100%;
-  object-fit: cover;  
 }
 
 .proj {
@@ -1505,32 +1525,52 @@ progress {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bs-dark);
-  border-bottom: 1px solid var(--bs-black);
+  width: 60%;
+  border: 2px solid #af4545;
+  border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
   margin-right: 13px;
+  padding: 20px;
 }
 
 .input {
-  width: 100%;
+  width: 80%;
   height: 100%;
   border: none;
   outline: none;
   font-size: 0.9em;
-  background-color: var(--bs-dark);
+  background-color: none;
+  background: transparent;
   caret-color: #af4545;
   color: var(--bs-black);
   padding: 10px;
 }
 
+.input-top {
+  width: 80%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 0.9em;
+  background-color: none;
+  background: transparent;
+  caret-color: #af4545;
+  color: var(--bs-white);
+  padding: 10px;
+  vertical-align: middle;
+}
+
 .labelforsearch {
   cursor: pointer;
-  padding: 0px 12px;
 }
 
 .searchIcon {
-  width: 15px;
+  width: 20px;
+}
+
+.searchIcon-top {
+  width: 20px;
 }
 
 .border {
@@ -1560,14 +1600,15 @@ progress {
   fill: #af4545;
 }
 
-.micIcon path {
-  fill: rgb(255, 81, 0);
+
+.searchIcon-top path {
+  fill: var(--bs-white);
 }
 
-.micButton:hover {
-  background-color: rgb(255, 230, 230);
-  transition-duration: .3s;
+.searchIcon-top:hover path {
+  fill: #af4545;
 }
+
 
 .img-fluid {
   max-width: 100%;
@@ -5001,9 +5042,12 @@ textarea.form-control-lg {
   transition: all 1s;
   z-index: 1;
   background-color: #212529;
-  margin-top: 30px;
-  margin-left: 50px;
-  margin-right: 50px;
+
+}
+
+.main_logo {
+  width: 400px;
+
 }
 
 .logoimg {
@@ -5499,7 +5543,6 @@ textarea.form-control-lg {
   min-width: 0;
   height: var(--bs-card-height);
   word-wrap: break-word;
-  background-color: var(--bs-card-bg);
   background-clip: border-box;
   border: var(--bs-card-border-width) solid var(--bs-card-border-color);
   border-radius: var(--bs-card-border-radius);
@@ -5529,6 +5572,14 @@ textarea.form-control-lg {
 .card > .list-group + .card-footer {
   border-top: 0;
 }
+
+.card-blur {
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background-color: rgba(var(--bs-dark-rgb), 0.2);
+}
+
+
 
 .card-cover {
   z-index: 5;
@@ -9705,6 +9756,14 @@ video {
 .text-white {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+}
+
+.text-infopage {
+  color:#323232;
+}
+
+.text-main {
+  color:#af4545;
 }
 
 .text-only-white {
