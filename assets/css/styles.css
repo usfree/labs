@@ -5061,7 +5061,7 @@ textarea.form-control-lg {
 
 .main_logo {
   width: 350px;
-
+ cursor: pointer;
 }
 
 .logoimg {
