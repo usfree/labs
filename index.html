@@ -18,8 +18,13 @@
         <script src="assets/js/jquery-3.7.1.min.js"></script>
         <script>
             function go() {
-                let input_name = $("#name").val();
-                location.href = "info.html#" + input_name;
+                if (!$("#name").val()) {
+                    alert("캐릭터명을 입력해주세요 !");
+                } else {
+                    let input_name = $("#name").val();
+                    location.href = "info.html#" + input_name;
+                }
+
             }
             $(function() {
                 $('.ss-go-top').on("click", function() {
