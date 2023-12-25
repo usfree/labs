@@ -163,9 +163,10 @@ body {
   --bs-logo-img: url("../../images/labs_logo.png");
 }
 
-/*info*/
+/*info*/ 
+
 .character-top {
-  height: 450px;
+  height: 500px;
   width: 100%;
   position: relative;
 }
@@ -3887,8 +3888,8 @@ textarea.form-control-lg {
 }
 
 .btn {
-  --bs-btn-padding-x: 0.55rem;
-  --bs-btn-padding-y: 0.175rem;
+  --bs-btn-padding-x: 0.65rem;
+  --bs-btn-padding-y: 0.275rem;
   --bs-btn-font-family: ;
   --bs-btn-font-size: 1rem;
   --bs-btn-font-weight: 400;
