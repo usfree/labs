@@ -146,9 +146,9 @@
                             })
                             .done(function (msg) {
                                 console.log(msg);
-                                $('.dojang_best_floor').empty().append(msg.dojang_best_floor);
-                                $('.dojang_best_time').empty().append(Math.floor(msg.dojang_best_time / 60));
-                                $('.dojang_best_time_sec').empty().append(msg.dojang_best_time % 60);
+                                $('.dojang_best_floor').empty().append(msg.dojang_best_floor + '층');
+                                $('.dojang_best_time').empty().append(Math.floor(msg.dojang_best_time / 60) + '분');
+                                $('.dojang_best_time_sec').empty().append(msg.dojang_best_time % 60 + '초');
                             });
                             $.ajax({
                                 method: "GET",
