@@ -161,6 +161,21 @@ body {
   --bs-normal-rgb: 252, 133, 116;
   transition: all 1s;
   --bs-logo-img: url("../../images/labs_logo.png");
+  margin: 0;
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--bs-body-color);
+  text-align: var(--bs-body-text-align);
+  background-color: var(--bs-body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  animation: fadein 2000ms ease-out;
+  -moz-animation: fadein 2000ms ease-out; /* Firefox */
+  -webkit-animation: fadein 2000ms ease-out; /* Safari and  Chrome */
+  -o-animation: fadein 2000ms ease-out; /* Opera */
+
 }
 
 /*info*/ 
@@ -676,8 +691,6 @@ li:hover > .nav-link::after {
   width            : 100%;
 
   min-height       : calc(25.5 * var(--space));
-  overflow         : hidden;
-
 }
 
 .s-intro__content {
@@ -987,26 +1000,6 @@ universe 공통 영역 끝
   opacity    : 1;
   visibility : visible;
   transform  : translate(0, 0);
-}
-
-
-
-body {
-  margin: 0;
-  font-family: var(--bs-body-font-family);
-  font-size: var(--bs-body-font-size);
-  font-weight: var(--bs-body-font-weight);
-  line-height: var(--bs-body-line-height);
-  color: var(--bs-body-color);
-  text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  animation: fadein 2000ms ease-out;
-  -moz-animation: fadein 2000ms ease-out; /* Firefox */
-  -webkit-animation: fadein 2000ms ease-out; /* Safari and  Chrome */
-  -o-animation: fadein 2000ms ease-out; /* Opera */
-
 }
 
 hr {

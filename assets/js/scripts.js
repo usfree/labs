@@ -192,7 +192,8 @@ function chrsearch(){
                     },
                     success: function (msg) {
                         $('.union_level').empty().append(msg.union_level);
-                        $('.union_grade').empty().append(msg.union_grade);
+                        let union_grade_replace = msg.union_grade.replace('유니온 ', '');
+                        $('.union_grade').empty().append(union_grade_replace);
                     }
                 });
                 $.ajax({
