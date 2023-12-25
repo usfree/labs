@@ -92,13 +92,19 @@
 */
 })(document.documentElement);
 
-var api_key = "test_02623554ef843dbcfc123dd4da641b0283e128664e49b910a861c6e72eac0210bf3643c32b0b17d7f277797c8916b69b";
+var api_key = "test_02623554ef843dbcfc123dd4da641b02cbb8e140ce7efc351c80b653c00821e97d1eb3c76b354b5e920c5d870f6c7c2f";
 
 var get_ocid;
 var today = new Date();
 var year = today.getFullYear();
 var month = today.getMonth() + 1; 
-var date = today.getDate() - 1;
+var hours = today.getHours();
+var date;
+if (hours >= 1) {
+    date = today.getDate() - 1;
+} else {
+    date = today.getDate() - 2;
+}
 var today_date = year + '-' + month + '-' + date;
 
 function chrsearch(){
@@ -139,6 +145,9 @@ function chrsearch(){
                         $('.character_guild_name').empty().append(msg.character_guild_name);
                         $('.character_image').empty().append('<img src="' + msg.character_image + '" style="width: 180px;"/>');
                         $('.character_exp_rate').empty().append(msg.character_exp_rate); 
+                    },
+                    error: function(msg) {
+                        alert("API 오류: " + msg.message);
                     }
                 });
                 $.ajax({
