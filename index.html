@@ -66,10 +66,6 @@
         <meta property="og:description" content="USFREE 실험실" />
     </head>
     <body class="d-flex flex-column vh-100 overflow-scroll-y" oncontextmenu="return false" ondragstart="return false">
-        <video class="hidden" >
-            <source src=  />
-        </video>
-
         <img class="bg-video-prj" src="images/back.jpeg">
         <main class="flex-shrink-0">
             <!-- Navigation-->
@@ -96,13 +92,6 @@
                     </div>
                 </nav>
             </div>
-        <div class= "load" id="load">
-            <div class="loader">
-                <svg viewBox="25 25 50 50" class="loadings">
-                    <circle r="20" cy="50" cx="50"></circle>
-                </svg>
-            </div>
-        </div>
         <div id="main">
             <div class="s-intro">
                 <div class="s-intro__content row text-black pt-5">
@@ -111,10 +100,10 @@
                             <div class="col">
                                 <div class="row row-cols-lg-2 justify-content-center font-3">
                                     <div class="card h-100 overflow-hidden border-0 rounded-2 pt-2 card-blur">
-                                        <div class="w-100 text-center">
+                                        <div class="text-center">
                                             <img class="main_logo p-4 mb-2 mt-5" src="images/labs_logo.png" onClick="location.reload()">
                                         </div>
-                                        <div class="mb-5 w-100 justify-content-center d-flex">
+                                        <div class="mb-5 justify-content-center d-flex">
                                             <div class="InputContainer mb-5">
                                                 <label class="fs-7 text-main no_enter">메이플스토리　</label>
                                                 <input type="text" id="name" class="input" placeholder="닉네임 검색" onkeyup="if(window.event.keyCode==13){go()}" autofocus>

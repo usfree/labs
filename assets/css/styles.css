@@ -691,6 +691,8 @@ li:hover > .nav-link::after {
   width            : 100%;
 
   min-height       : calc(25.5 * var(--space));
+  overflow         : hidden;
+
 }
 
 .s-intro__content {
