@@ -36,6 +36,19 @@
                     $('html, body').animate({scrollTop: '0'}, 100);
                 })
 
+                $('#statbtn').on("click", function() {
+                    $('.stat_').removeClass('hidden');
+                    $('.item_').addClass('hidden');
+                    $('#statbtn').addClass('activebtn')
+                    $('#itembtn').removeClass('activebtn')
+                })
+                $('#itembtn').on("click", function() {
+                    $('.stat_').addClass('hidden');
+                    $('.item_').removeClass('hidden');
+                    $('#statbtn').removeClass('activebtn')
+                    $('#itembtn').addClass('activebtn')
+                })
+
                 /* 로딩 progress bar */
                 $(window).on("load", function() {
                     $('#load').fadeOut('slow');
@@ -157,263 +170,280 @@
                         <div class="card shadow rounded-2 border-0 bg-white dfdf">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
-                                    <div class="p-2 proj_text w-100 py-5">
-                                        <div class="row row-cols-1 row-cols-lg-2 justify-content-center font-3">
-                                            <div class="col-xl-3 mb-2">
-                                                <div class="card card-cover h-100 card-border-1">
-                                                    <div class="d-flex flex-column h-100 py-4 card-overtext ">
-                                                        <span class="font-3 fs-6 text-main mb-2">전투력</span>
-                                                        <div class="fs-3 fw-bolder text-infopage mb-5"><span class="stat_value42"></span></div>
-                                                        <span class="font-3 fs-6 text-main mb-2">스탯 공격력</span>
-                                                        <div class="fs-6 fw-bolder text-infopage"><span class="stat_value0"></span> ~ <span class="stat_value1"></span></div>
+                                    <div class="p-2 proj_text w-100">
+                                        <div class="select_btn mb-5">
+                                            <div class="row row-cols-5 row-cols-lg-5 justify-content-center font-3">
+                                                <a class="contentbtn activebtn" id="statbtn">
+                                                <div class="col text-center">
+                                                    <div class="mb-2">스탯</div>
+                                                </div></a>
+                                                <a class="contentbtn" id="itembtn">
+                                                <div class="col text-center">
+                                                    <div class="">아이템</div>
+                                                </div></a>
+                                            </div>
+                                        </div>
+                                        <div class="item_  py-5 hidden">
+                                            아이템 정보 추가 예정
+                                        </div>
+                                        <div class="stat_  py-5">
+                                            <div class="row row-cols-1 row-cols-lg-2 justify-content-center font-3">
+                                                <div class="col-xl-3 mb-2">
+                                                    <div class="card card-cover h-100 card-border-1">
+                                                        <div class="d-flex flex-column h-100 py-4 card-overtext ">
+                                                            <span class="font-3 fs-6 text-main mb-2">전투력</span>
+                                                            <div class="fs-3 fw-bolder text-infopage mb-5"><span class="stat_value42"></span></div>
+                                                            <span class="font-3 fs-6 text-main mb-2">스탯 공격력</span>
+                                                            <div class="fs-6 fw-bolder text-infopage"><span class="stat_value0"></span> ~ <span class="stat_value1"></span></div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col mb-2">
-                                                <div class="card card-cover h-100 text-bg-dark text-black card-border-1">
-                                                    <div class="d-flex flex-column h-100 py-4 card-overtext">
-                                                        <span class="font-3 fs-6 text-main mb-2">상세 스탯</span>
-                                                            <div class="row row-cols-2">
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">HP</span>
+                                                <div class="col mb-2">
+                                                    <div class="card card-cover h-100 text-bg-dark text-black card-border-1">
+                                                        <div class="d-flex flex-column h-100 py-4 card-overtext">
+                                                            <span class="font-3 fs-6 text-main mb-2">상세 스탯</span>
+                                                                <div class="row row-cols-2">
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">HP</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_hp font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_hp font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">MP</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_mp font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">MP</span>
+                                                                <div class="row row-cols-2">
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">STR</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_str font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_mp font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">DEX</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_dex font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row row-cols-2">
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">STR</span>
+                                                                <div class="row row-cols-2 mb-3">
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">INT</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_int font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_str font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">LUK</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_luk font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">DEX</span>
+                                                                <div class="row row-cols-2">
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">스탯 공격력</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_value1 font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_dex font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">데미지</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_dmg font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row row-cols-2 mb-3">
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">INT</span>
+                                                                <div class="row row-cols-2">
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">최종 데미지</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_finaldmg font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_int font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">보스 몬스터 데미지</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_bossdmg font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">LUK</span>
+                                                                <div class="row row-cols-2">
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">방어율 무시</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_atk_shield font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_luk font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">일반 몬스터 데미지</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_nordmg font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row row-cols-2">
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">스탯 공격력</span>
+                                                                <div class="row row-cols-2">
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">공격력</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_ad font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_value1 font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">크리티컬 확률</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_criper font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">데미지</span>
+                                                                <div class="row row-cols-2">
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">마력</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_ap font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_dmg font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">크리티컬 데미지</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_cridmg font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row row-cols-2">
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">최종 데미지</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_finaldmg font-3 fs-7 text-infopage mb-2 float-right"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">보스 몬스터 데미지</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_bossdmg font-3 fs-7 text-infopage mb-2 float-right"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row row-cols-2">
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">방어율 무시</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_atk_shield font-3 fs-7 text-infopage mb-2 float-right"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">일반 몬스터 데미지</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_nordmg font-3 fs-7 text-infopage mb-2 float-right"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row row-cols-2">
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">공격력</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_ad font-3 fs-7 text-infopage mb-2 float-right"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">크리티컬 확률</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_criper font-3 fs-7 text-infopage mb-2 float-right"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row row-cols-2">
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">마력</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_ap font-3 fs-7 text-infopage mb-2 float-right"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">크리티컬 데미지</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_cridmg font-3 fs-7 text-infopage mb-2 float-right"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row row-cols-2">
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">재사용 대기시간 감소</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_reusemper  font-3 fs-7 text-infopage mb-2 float-right"></span>
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 float-right"> / </span>
-                                                                            <span class="stat_reusem font-3 fs-7 text-infopage mb-2 float-right"></span> 
+                                                                <div class="row row-cols-2">
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">재사용 대기시간 감소</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_reusemper  font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 float-right"> / </span>
+                                                                                <span class="stat_reusem font-3 fs-7 text-infopage mb-2 float-right"></span> 
 
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">버프 지속시간</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_bufftime font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">버프 지속시간</span>
+                                                                <div class="row row-cols-2">
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">재사용 대기시간 미적용</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_now_reuse font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_bufftime font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">속성 내성 무시</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_no_attr font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row row-cols-2">
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">재사용 대기시간 미적용</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_now_reuse font-3 fs-7 text-infopage mb-2 float-right"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">속성 내성 무시</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_no_attr font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                <div class="row row-cols-2">
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">상태이상 추가 데미지</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_dbuffdmg font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row row-cols-2">
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">상태이상 추가 데미지</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_dbuffdmg font-3 fs-7 text-infopage mb-2 float-right"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="row row-cols-2">
-                                                                        <div class="col">
-                                                                            <span class="font-3 fs-7 text-infopage mb-2 fw-bold">소환수 지속시간 증가</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <span class="stat_spawn_use_plus font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                    <div class="col">
+                                                                        <div class="row row-cols-2">
+                                                                            <div class="col">
+                                                                                <span class="font-3 fs-7 text-infopage mb-2 fw-bold">소환수 지속시간 증가</span>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <span class="stat_spawn_use_plus font-3 fs-7 text-infopage mb-2 float-right"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
