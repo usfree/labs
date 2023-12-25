@@ -115,6 +115,9 @@ function chrsearch(){
                 get_ocid = data.ocid;
                 console.log(data.ocid);
             },
+            error: function() {
+                alert("캐릭터를 찾을 수 없습니다 ! \r\n12월 21일 이후 접속 이력이 있는 캐릭터만 조회가 가능합니다.");
+            },
             complete: function() {
                 $.ajax({
                     method: "GET",
