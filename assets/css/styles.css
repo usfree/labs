@@ -480,6 +480,9 @@ body[data-darkmode=on] .darkmode > .inner{
   .info-w-50 {
     width: 100% !important;
   }
+  .main_logo {
+    width: 70% !important;
+  }
 }
 
 .info-w-50 {
