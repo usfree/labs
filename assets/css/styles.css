@@ -186,7 +186,7 @@ body {
 .card-blur-info {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  background-color: rgba(var(--bs-white-rgb), 0.4);
+  background-color: rgba(var(--bs-dark-rgb), 0.1);
   overflow: visible;
 }
 
