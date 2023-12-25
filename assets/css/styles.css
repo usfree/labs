@@ -9663,6 +9663,10 @@ video {
   text-align: right !important;
 }
 
+.float-right {
+  float: right;
+}
+
 .text-center {
   text-align: center !important;
 }

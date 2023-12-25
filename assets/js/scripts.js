@@ -92,7 +92,7 @@
 */
 })(document.documentElement);
 
-var api_key = "test_02623554ef843dbcfc123dd4da641b029a908c91c153de90155ad054ff007192f45a60776b6dac51636c69c1342bf2b7";
+var api_key = "test_02623554ef843dbcfc123dd4da641b0283e128664e49b910a861c6e72eac0210bf3643c32b0b17d7f277797c8916b69b";
 
 var get_ocid;
 var today = new Date();
@@ -235,8 +235,35 @@ function chrsearch(){
                     },
                     success: function(msg){
                         $('.stat_value42').empty().append(msg.final_stat[42].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                        $('.stat_spawn_use_plus').empty().append(msg.final_stat[43].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
                         $('.stat_value0').empty().append(msg.final_stat[0].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                         $('.stat_value1').empty().append(msg.final_stat[1].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                        $('.stat_dmg').empty().append(msg.final_stat[2].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
+                        $('.stat_bossdmg').empty().append(msg.final_stat[3].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
+                        $('.stat_finaldmg').empty().append(msg.final_stat[4].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
+                        $('.stat_atk_shield').empty().append(msg.final_stat[5].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
+                        $('.stat_criper').empty().append(msg.final_stat[6].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
+                        $('.stat_cridmg').empty().append(msg.final_stat[7].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
+                        $('.stat_bufftime').empty().append(msg.final_stat[30].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
+                        $('.stat_nordmg').empty().append(msg.final_stat[32].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
+                        $('.stat_reusem').empty().append(msg.final_stat[33].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '초');
+                        $('.stat_reusemper').empty().append(msg.final_stat[34].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
+                        $('.stat_now_reuse').empty().append(msg.final_stat[35].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
+                        $('.stat_no_attr').empty().append(msg.final_stat[36].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
+                        $('.stat_dbuffdmg').empty().append(msg.final_stat[37].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '%');
+                        $('.stat_ad').empty().append(msg.final_stat[40].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                        $('.stat_ap').empty().append(msg.final_stat[41].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                        $('.stat_hp').empty().append(msg.final_stat[20].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                        if (msg.final_stat[21].stat_value === null) {
+                            $('.stat_mp').empty().append("-");
+                        } else {
+                            $('.stat_mp').empty().append(msg.final_stat[21].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                        }
+                        //
+                        $('.stat_str').empty().append(msg.final_stat[16].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                        $('.stat_dex').empty().append(msg.final_stat[17].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                        $('.stat_int').empty().append(msg.final_stat[18].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                        $('.stat_luk').empty().append(msg.final_stat[19].stat_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                     }
                 });
             }
