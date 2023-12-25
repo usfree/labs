@@ -165,13 +165,21 @@ body {
 
 /*info*/
 .character-top {
-  height: 400px;
+  height: 700px;
   width: 100%;
   position: relative;
 }
 
+.dfdf {
+  top : -200px;
+}
+
+.text-infopage {
+  color:#323232;
+}
+
 .bg-wh {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(var(--bs-white-rgb), 0.9);
 }
 
 .bg-info-back img {
@@ -184,9 +192,9 @@ body {
 }
 
 .card-blur-info {
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  background-color: rgba(var(--bs-dark-rgb), 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(var(--bs-dark-rgb), 0.05);
   overflow: visible;
 }
 
@@ -5595,14 +5603,9 @@ textarea.form-control-lg {
   background: var(--bs-card-bg);
 }
 
-.card-cover:hover {
-  background: var(--lenear-gradient);
-  transition: all 0.3s;
-}
-
 .card-border-1 {
   border: none;
-  border-top: 2px solid #0078C3;
+  border-top: 3px solid #af4545;
 }
 
 .card-border-2 {
@@ -9764,9 +9767,6 @@ video {
   color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
 }
 
-.text-infopage {
-  color:#323232;
-}
 
 .text-main {
   color:#af4545;

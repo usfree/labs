@@ -16,12 +16,13 @@
         <script src="assets/js/748053c430.js"></script>
         <script src="assets/js/jquery-3.7.1.min.js"></script>
         <script>
-            var api_key = "test_02623554ef843dbcfc123dd4da641b023a771ea800dcdabb44b9bebb0900288b7756f026a332d1a2e24a473f972f5a44";
-            let today = new Date();
-            let year = today.getFullYear(); // 년도
-            let month = today.getMonth() + 1;  // 월
-            let date = today.getDate() - 1;  // 날짜
-            var today_date = year + '-' + month + '-' + date;
+
+
+
+            function go() {
+                let input_name = $("#name").val();
+                location.href = "info.html#" + input_name;
+            }
 
 
             var acorClose = function() {
@@ -33,6 +34,7 @@
 
             /* 버튼 클릭으로 load 페이지 변경 */
             function gotosaveloc(gotolo) {
+                
                 $('#main').hide().fadeOut('fast', function() {
                     $.ajax({
                             url: gotolo,
@@ -40,12 +42,13 @@
                             type: "get",
                             success: (result) => {
                                 $("#main").html(result).fadeIn();
+                                
                             }
                     });
                     history.pushState({
                         data: gotolo,
                         page: 1
-                    }, null, "index.html#" + gotolo);
+                    }, null, gotolo + "#" + input_name);
                 })
                 acorClose();
                 $('html, body').animate({scrollTop: '0'}, 100);
@@ -56,150 +59,13 @@
                     $('html, body').animate({scrollTop: '0'}, 100);
                 })
 
-                /* 새로고침 or 초기로딩 */
-                window.onload = function(){
-                    var hash = location.hash;
-                    var rehash = hash.replace('#','');
-                    if (hash == "") { 
-                        gotosaveloc("main.html");
-                    } else if (hash == "#intro") {
-                        gotosaveloc("main.html");
-                    } else {
-                        gotosaveloc(rehash);
-                    }
-                }
-                /* 뒤로가기*/
-                $(window).on('popstate', function (event) {
-                    const data = event.originalEvent.state;
-                    $.ajax({
-                        url: data.data,
-                        data: {page:data.page, type: data.type, keyword: data.keyword},
-                        type: "get",
-                        success: (result) => {
-                            $("#main").html(result).fadeIn();
-                        }
-                    }) 
-                /* 항상 load 영역이랑 싱크 확인 */
-                    acorClose();
-                });
-                
                 /* 로딩 progress bar */
                 $(window).on("load", function() {
                     $('#load').fadeOut('slow');
                 });
-                $("#mains").click(function() {
-                    gotosaveloc("main.html");
-                });
 
             });
 
-
-            var get_ocid;
-            function chrsearch(){
-                let input_name = $("#name").val(); //"아닉"; //
-                $.ajax({
-                        method: "GET",
-                        url: "https://open.api.nexon.com/maplestory/v1/id",
-                        data: {
-                            character_name: input_name,
-                        },
-                        headers: {
-                            "x-nxopen-api-key": api_key
-                        },
-                        success: function (data) {
-                            get_ocid = data.ocid;
-                            console.log(data.ocid);
-                            sessionStorage.setItem('name', input_name);
-                        },
-                        complete: function() {
-                            $.ajax({
-                                method: "GET",
-                                url: "https://open.api.nexon.com/maplestory/v1/character/basic",
-                                data: {
-                                    ocid: get_ocid,
-                                    date: today_date
-                                },
-                                headers: {
-                                    "x-nxopen-api-key": api_key
-                                },
-                            })
-                            .done(function (msg) {
-                                console.log(msg);
-                                $('.character_name').empty().append(msg.character_name);
-                                $('.world_name').empty().append(msg.world_name);
-                                $('.character_level').empty().append(msg.character_level);
-                                $('.character_class').empty().append(msg.character_class);
-                                $('.character_guild_name').empty().append(msg.character_guild_name);
-                                $('.character_image').empty().append('<img src="' + msg.character_image + '" style="width: 115%;"/>');
-                                $('.character_exp_rate').empty().append(msg.character_exp_rate); 
-                            });
-                            $.ajax({
-                                method: "GET",
-                                url: "https://open.api.nexon.com/maplestory/v1/character/dojang",
-                                data: {
-                                    ocid: get_ocid,
-                                    date: today_date
-                                },
-                                headers: {
-                                    "x-nxopen-api-key": api_key
-                                },
-                            })
-                            .done(function (msg) {
-                                console.log(msg);
-                                $('.dojang_best_floor').empty().append(msg.dojang_best_floor + '층');
-                                $('.dojang_best_time').empty().append(Math.floor(msg.dojang_best_time / 60) + '분');
-                                $('.dojang_best_time_sec').empty().append(msg.dojang_best_time % 60 + '초');
-                            });
-                            $.ajax({
-                                method: "GET",
-                                url: "https://open.api.nexon.com/maplestory/v1/character/popularity",
-                                data: {
-                                    ocid: get_ocid,
-                                    date: today_date
-                                },
-                                headers: {
-                                    "x-nxopen-api-key": api_key
-                                },
-                            })
-                            .done(function (msg) {
-                                console.log(msg);
-                                $('.popularity').empty().append(msg.popularity);
-                            });
-                            $.ajax({
-                                method: "GET",
-                                url: "https://open.api.nexon.com/maplestory/v1/user/union",
-                                data: {
-                                    ocid: get_ocid,
-                                    date: today_date
-                                },
-                                headers: {
-                                    "x-nxopen-api-key": api_key
-                                },
-                            })
-                            .done(function (msg) {
-                                console.log(msg);
-                                $('.union_level').empty().append(msg.union_level);
-                                $('.union_grade').empty().append(msg.union_grade);
-                            });
-                            $.ajax({
-                                method: "GET",
-                                url: "https://open.api.nexon.com/maplestory/v1/ranking/achievement",
-                                data: {
-                                    ocid: get_ocid,
-                                    date: today_date
-                                },
-                                headers: {
-                                    "x-nxopen-api-key": api_key
-                                },
-                            })
-                            .done(function (msg) {
-                                console.log(msg);
-                                $('.trophy_score').empty().append(msg.ranking[0].trophy_score);
-                                $('.trophy_grade').empty().append(msg.ranking[0].trophy_grade);
-                            });
-                        }
-                    })
-                }
         </script>
         <link href="assets/css/styles.css" rel="stylesheet"/>
         <!-- OG TAG -->
@@ -248,7 +114,33 @@
             </div>
         </div>
         <div id="main">
-            <!-- load될 영역 -->
+            <div class="s-intro">
+                <div class="s-intro__content row text-black pt-5">
+                    <div class="column">
+                        <div class="row row-cols-lg-1 justify-content-center font-3">
+                            <div class="col">
+                                <div class="row row-cols-lg-2 justify-content-center font-3">
+                                    <div class="card h-100 overflow-hidden border-0 rounded-2 pt-2 card-blur">
+                                        <div class="w-100 text-center">
+                                            <img class="main_logo p-4 mb-2 mt-5" src="images/labs_logo.png">
+                                        </div>
+                                        <div class="mb-5 w-100 justify-content-center d-flex">
+                                            <div class="InputContainer mb-5">
+                                                <label class="fs-7 text-main no_enter">메이플스토리　</label>
+                                                <input type="text" id="name" class="input" placeholder="닉네임 검색" onkeyup="if(window.event.keyCode==13){go()}" autofocus>
+                                                <label for="input" class="labelforsearch" onclick="go()">
+                                                    <svg viewBox="0 0 512 512" class="searchIcon"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-5 small"><i class="fa-solid fa-triangle-exclamation"></i> 12월 21일 이후 접속 이력이 있는 캐릭터만 조회 가능합니다.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         </main>
