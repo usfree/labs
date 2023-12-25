@@ -203,7 +203,6 @@ body {
 }
 
 
-
 .text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
 .text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
 .text-shadow-3 { text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25); }
@@ -5600,10 +5599,7 @@ textarea.form-control-lg {
 
 .card-cover {
   z-index: 5;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background: var(--bs-card-bg);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .card-border-1 {

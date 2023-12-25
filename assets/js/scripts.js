@@ -92,7 +92,7 @@
 */
 })(document.documentElement);
 
-var api_key = "test_02623554ef843dbcfc123dd4da641b021390670490c415561c29676c50ef5a4fb1cf4e9d24e21ddee71643e81e700659";
+var api_key = "test_02623554ef843dbcfc123dd4da641b02653343918422765f689b7972a8b248ea2b37073aa09536d8e7e1157157f3034c";
 
 var get_ocid;
 var today = new Date();
@@ -220,9 +220,6 @@ function chrsearch(){
                             $('.theseed_time_record_sec').empty().append(msg.ranking[0].theseed_time_record % 60 + '초');
                         }
                     },
-                    error: function() {
-                        alert("시드 정보 없음");
-                    }
                 });
                 $.ajax({
                     method: "GET",
