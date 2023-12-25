@@ -134,8 +134,7 @@ function chrsearch(){
                         $('.world_name').empty().append(msg.world_name);
                         $('.character_level').empty().append(msg.character_level);
                         $('.character_class').empty().append(msg.character_class);
-                        console.log(msg.character_class);
-                        $('#class_back').empty().append('<img src="images/' + msg.character_class + '.png"/>');
+                        $('#class_back').empty().append('<img src="images/jobs/' + msg.character_class + '.png"/>');
                         $('.character_guild_name').empty().append(msg.character_guild_name);
                         $('.character_image').empty().append('<img src="' + msg.character_image + '" style="width: 115%;"/>');
                         $('.character_exp_rate').empty().append(msg.character_exp_rate); 
