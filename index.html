@@ -21,29 +21,6 @@
                 let input_name = $("#name").val();
                 location.href = "info.html#" + input_name;
             }
-
-            /* 버튼 클릭으로 load 페이지 변경 */
-            function gotosaveloc(gotolo) {
-                
-                $('#main').hide().fadeOut('fast', function() {
-                    $.ajax({
-                            url: gotolo,
-                            data: {page: 1},
-                            type: "get",
-                            success: (result) => {
-                                $("#main").html(result).fadeIn();
-                                
-                            }
-                    });
-                    history.pushState({
-                        data: gotolo,
-                        page: 1
-                    }, null, gotolo + "#" + input_name);
-                })
-                acorClose();
-                $('html, body').animate({scrollTop: '0'}, 100);
-            }
-
             $(function() {
                 $('.ss-go-top').on("click", function() {
                     $('html, body').animate({scrollTop: '0'}, 100);
