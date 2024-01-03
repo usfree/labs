@@ -105,7 +105,7 @@ if (hours >= 1) {
 } else {
     date = today.getDate() - 2;
 }
-var today_date = year + '-' + month + '-' + date;
+var today_date = year+"-"+(("00"+month.toString()).slice(-2))+"-"+(("00"+date.toString()).slice(-2));
 
 function chrsearch(){
     $.ajax({
